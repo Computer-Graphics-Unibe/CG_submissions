@@ -1,6 +1,6 @@
 Assignment 0
 
-Authors: Basil ..., Linard Büchler, Eric Buffle
+Authors (alphabetical order): Linard Büchler, Eric Buffle, Basil Peterhans
 
 Description on how the exercise was solved: 
 
