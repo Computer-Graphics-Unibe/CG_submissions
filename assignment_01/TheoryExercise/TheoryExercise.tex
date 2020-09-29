@@ -1,0 +1,88 @@
+
+
+\documentclass[a4paper, 12pt]{article}
+\usepackage{scrextend, algorithm,algorithmic, amssymb, amsmath, cancel, framed, geometry, listings, lmodern, mathtools,multirow,parskip, paralist,pgfplots,extarrows, ragged2e,setspace,tcolorbox, upquote, tikz, enumitem}
+\setlist{nosep}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{newtxmath}
+\usepackage[english]{babel}
+\usetikzlibrary{positioning}
+\usepackage{xcolor}
+\definecolor{mypink1}{RGB}{0, 170, 0}
+\usepackage[utf8x]{inputenc}
+\usepackage{fancyhdr}
+\fancyhf{}
+\usepackage{tabu}
+\pagestyle{fancy}
+\rfoot{Page \thepage}
+\usepackage[T1]{fontenc}
+\usepackage[colorlinks]{hyperref}
+\hypersetup{
+	colorlinks,
+	filecolor=magenta,
+	linkcolor=blue,
+	citecolor=mypink1,      
+	urlcolor=cyan,
+}
+\geometry{
+	a4paper,
+	total={170mm,257mm},
+	left=20mm,
+	top=20mm,
+}
+\usepackage{caption}
+\usepackage{xurl}
+%\usepackage{calrsfs}
+%\DeclareMathAlphabet{\pazocal}{OMS}{zplm}{m}{n}
+\newcommand{\stencilpt}[4][]{\node[circle,draw,inner sep=0.1em,minimum size=0.6cm,font=\tiny,#1] at (#2) (#3) {#4}}
+\newcommand{\stencilptbig}[4][]{\node[circle,draw,inner sep=0.1em, outer sep=0pt, minimum size=0.7cm,font=\normalfont,#1] at (#2) (#3) {#4}}
+\definecolor{shadecolor}{RGB}{240,248,255}
+\definecolor{darkred}{rgb}{0.85,0,0}
+\setlength{\parskip}{0.5em}
+\begin{document}
+	\setlength{\parindent}{0cm}
+	\renewcommand{\baselinestretch}{0.5}
+	\title{Assignment 01}
+	\author{Basil Peterhans, Eric Buffle, Linard Büchler}
+	\date{\today}
+	\maketitle
+	\tableofcontents{}
+\section{Ray-plane intersection}
+A ray equation can be formulated as follows:
+$$
+\textbf{r}(t) = \textbf{o}+ t\textbf{d}
+$$
+For a plane $\textbf{n}$, the ray-plane intersection can be formulated as:
+$$
+\textbf{n}^\top (\textbf{o}+ t\textbf{d})- b = 0
+$$
+solving for $t$, we get
+\begin{align*}
+\textbf{n}^\top (\textbf{o}+ t\textbf{d})- b &= 0\\
+\textbf{n}^\top\textbf{o} + t\textbf{n}^\top\textbf{d} - b &=0\\
+\implies t\textbf{n}^\top\textbf{d} &=b - \textbf{n}^\top\textbf{o}  &=0\\
+\implies t &=\frac{b - \textbf{n}^\top\textbf{o}}{\textbf{n}^\top\textbf{d}} \\
+\end{align*}
+\section{Ray-cylinder intersection + normal derivations}
+A cylinder can be described by
+\begin{itemize}
+  \item A position vector $\textbf{p}_1$ describing the first end point of the long axis of the cylinder
+  \item A position vector $\textbf{p}_2$ describing the second end point of the long axis of the cylinder
+  \item a radius $r$
+\end{itemize}
+The axis of the cylinder can be written as $\Delta \textbf{p} = \textbf{p}_1 - \textbf{p}_2$ 
+Source : \cite{Pfister_Harvard}
+
+\begin{thebibliography}{10} % 10 is a random guess of the total number of references 
+\bibitem{Pfister_Harvard} \url{https://www.doc.ic.ac.uk/~dfg/graphics/graphics2010/GraphicsLecture11.pdf}%Companion}, Addison-Wesley, Reading, MA, 1994.
+%
+%\bibitem{HK} Kopka, H., Daly P.W., \emph{A Guide to LaTeX},
+%Addison-Wesley, Reading, MA, 1999.
+%
+%\bibitem{PR} Paul Reimer, \emph{http://www.phy.anl.gov/mep/SeaQuest/}, 2014. 
+%
+%\bibitem{JA} Joseph C. Amato and Roger E. Williams, \emph{AAPT Apparatus Competition}, 2008. 
+
+\end{thebibliography}
+\end{document}
