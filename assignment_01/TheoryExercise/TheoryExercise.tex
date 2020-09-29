@@ -1,5 +1,3 @@
-
-
 \documentclass[a4paper, 12pt]{article}
 \usepackage{scrextend, algorithm,algorithmic, amssymb, amsmath, cancel, framed, geometry, listings, lmodern, mathtools,multirow,parskip, paralist,pgfplots,extarrows, ragged2e,setspace,tcolorbox, upquote, tikz, enumitem}
 \setlist{nosep}
@@ -51,7 +49,7 @@
 \section{Ray-plane intersection}
 A ray equation can be formulated as follows:
 $$
-\textbf{r}(t) = \textbf{o}+ t\textbf{d}
+\textbf{s}(t) = \textbf{o}+ t\textbf{d}
 $$
 For a plane $\textbf{n}$, the ray-plane intersection can be formulated as:
 $$
@@ -61,21 +59,33 @@ solving for $t$, we get
 \begin{align*}
 \textbf{n}^\top (\textbf{o}+ t\textbf{d})- b &= 0\\
 \textbf{n}^\top\textbf{o} + t\textbf{n}^\top\textbf{d} - b &=0\\
-\implies t\textbf{n}^\top\textbf{d} &=b - \textbf{n}^\top\textbf{o}  &=0\\
+\implies t\textbf{n}^\top\textbf{d} &=b - \textbf{n}^\top\textbf{o}\\
 \implies t &=\frac{b - \textbf{n}^\top\textbf{o}}{\textbf{n}^\top\textbf{d}} \\
 \end{align*}
 \section{Ray-cylinder intersection + normal derivations}
-A cylinder can be described by
-\begin{itemize}
-  \item A position vector $\textbf{p}_1$ describing the first end point of the long axis of the cylinder
-  \item A position vector $\textbf{p}_2$ describing the second end point of the long axis of the cylinder
-  \item a radius $r$
-\end{itemize}
-The axis of the cylinder can be written as $\Delta \textbf{p} = \textbf{p}_1 - \textbf{p}_2$ 
-Source : \cite{Pfister_Harvard}
-
+The implicit equation for a cylinder centered on $z$ with radius $r$ is
+$$
+x^2 + y^2 = r^2
+$$
+where
+\begin{align*}
+  x&=r\cos\phi\\
+  y&=r\sin\phi
+\end{align*}
+We can now substitute the ray equation in the implicit cylinder equation:
+\begin{align*}
+(\textbf{o}_x+ t\textbf{d}_x)^2 + (\textbf{o}_y+ t\textbf{d}_y)^2 = r^2\\
+(\textbf{o}_x+ t\textbf{d}_x)^2 + (\textbf{o}_y+ t\textbf{d}_y)^2 -  r^2 &= 0\\
+\textbf{o}_x^2 + 2t\textbf{d}_x\textbf{o}_x + t^2\textbf{d}_x^2 + \textbf{o}_y^2 + 2t\textbf{d}_y\textbf{o}_y + t^2\textbf{d}_y^2-  r^2 &= 0\\
+t^2(\textbf{d}_x^2 + \textbf{d}_y^2) + t(2\textbf{d}_x\textbf{o}_x + 2\textbf{d}_y\textbf{o}_y) + \textbf{o}_x^2  + \textbf{o}_y^2 +  - r^2 &= 0\\
+\end{align*}
+which is a form of the quadratic equation:
+$$
+at^2 + bt + c
+$$
 \begin{thebibliography}{10} % 10 is a random guess of the total number of references 
-\bibitem{Pfister_Harvard} \url{https://www.doc.ic.ac.uk/~dfg/graphics/graphics2010/GraphicsLecture11.pdf}%Companion}, Addison-Wesley, Reading, MA, 1994.
+  \bibitem{Pharr_2018} Pharr et al. Physically Based Rendering:
+  From Theory To Implementation, \url{http://www.pbr-book.org/3ed-2018/Shapes/Cylinders.html}%Companion}, Addison-Wesley, Reading, MA, 1994.
 %
 %\bibitem{HK} Kopka, H., Daly P.W., \emph{A Guide to LaTeX},
 %Addison-Wesley, Reading, MA, 1999.
