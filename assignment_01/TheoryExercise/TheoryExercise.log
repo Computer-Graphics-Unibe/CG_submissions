@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.7.28)  29 SEP 2020 22:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.7.28)  29 SEP 2020 22:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1563,7 +1563,7 @@ Package rerunfilecheck Info: File `TheoryExercise.out' has not changed.
 Here is how much of TeX's memory you used:
  37154 strings out of 492616
  823132 string characters out of 6129481
- 1020565 words of memory out of 5000000
+ 1019565 words of memory out of 5000000
  40360 multiletter control sequences out of 15000+600000
  82395 words of font info for 111 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1580,7 +1580,7 @@ ive/2019/texmf-dist/fonts/type1/public/newtx/rntxmi.pfb></usr/local/texlive/201
 f-dist/fonts/type1/public/txfonts/rtxr.pfb></usr/local/texlive/2019/texmf-dist/
 fonts/type1/public/newtx/txsys.pfb></usr/local/texlive/2019/texmf-dist/fonts/ty
 pe1/urw/times/utmri8a.pfb>
-Output written on TheoryExercise.pdf (2 pages, 136547 bytes).
+Output written on TheoryExercise.pdf (2 pages, 136969 bytes).
 PDF statistics:
  83 PDF objects out of 1000 (max. 8388607)
  68 compressed objects within 1 object stream
