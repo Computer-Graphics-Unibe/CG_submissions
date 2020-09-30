@@ -29,9 +29,9 @@ intersect(const Ray&  _ray,
     const vec3   oc = _ray.origin - center;
     std::array<double, 2> t;
 
-    double a = dot(dir-axis*dot(dir,axis), dir-axis*dot(dir,axis));
+    double a = dot(dir-dot(dir,axis)*axis, dir-dot(dir,axis)*axis);
     double b = 2* dot(dir-dot(dir,axis)*axis, oc-dot(oc,axis)*axis);
-    double c = dot(oc-dot(oc,axis)*axis, oc-dot(oc,axis)*axis);
+    double c = dot(oc-dot(oc,axis)*axis, oc-dot(oc,axis)*axis) - radius*radius;
 
     size_t nsol = solveQuadratic(a, b, c, t);
 

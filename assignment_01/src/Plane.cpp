@@ -40,11 +40,12 @@ intersect(const Ray& _ray,
     _intersection_t = NO_INTERSECTION;
 
     // Check parallelism
-    if(dot(normal,dir) != 0)
+    if(dot(normal,dir) != 0.0001)
         return false;
 
     // Calc intersection
-    double t = (dot(normal,center)-dot(normal,o)) / dot(normal,dir);
+    double t = dot(center-o,normal) / dot(normal,dir);
+//    double t = (dot(normal,center)-dot(normal,o)) / dot(normal,dir);
 
     // Check if behind of viewer
     if(t<0)
