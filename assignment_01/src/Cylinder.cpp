@@ -29,11 +29,17 @@ intersect(const Ray&  _ray,
     const vec3   oc = _ray.origin - center;
     std::array<double, 2> t;
 
-    double a = dot(dir - axis*dot(dir,axis), dir - axis*dot(dir,axis));
+    double a = dot(dir-axis*dot(dir,axis), dir-axis*dot(dir,axis));
     double b = 2* dot(dir-dot(dir,axis)*axis, oc-dot(oc,axis)*axis);
     double c = dot(oc-dot(oc,axis)*axis, oc-dot(oc,axis)*axis);
 
     size_t nsol = solveQuadratic(a, b, c, t);
+
+    // Calculate cylinder height at given intersection point
+    vec3 c2 = dot(center-_intersection_point,axis)*axis;
+//    double h = sqrt(std::abs(dot(c2-center,c2-center)));
+//    if(h > height/2)
+//        nsol = 0;
 
     _intersection_t = NO_INTERSECTION;
 
@@ -45,7 +51,7 @@ intersect(const Ray&  _ray,
     if (_intersection_t == NO_INTERSECTION) return false;
 
     _intersection_point  = _ray(_intersection_t);
-    _intersection_normal = (_intersection_point - dot(_intersection_point-center,axis)*axis) / radius;
+    _intersection_normal = (_intersection_point - c2) / radius;
 
     return true;
 

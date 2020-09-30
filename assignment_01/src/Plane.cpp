@@ -20,7 +20,7 @@
 
 
 Plane::Plane(const vec3& _center, const vec3& _normal)
-: center(_center), normal(_normal)
+    : center(_center), normal(_normal)
 {
 }
 
@@ -35,6 +35,26 @@ intersect(const Ray& _ray,
           vec3&      _intersection_normal,
           double&    _intersection_t ) const
 {
+    const vec3 &dir = _ray.direction;
+    const vec3   o = _ray.origin;
+    _intersection_t = NO_INTERSECTION;
+
+    // Check parallelism
+    if(dot(normal,dir) != 0)
+        return false;
+
+    // Calc intersection
+    double t = (dot(normal,center)-dot(normal,o)) / dot(normal,dir);
+
+    // Check if behind of viewer
+    if(t<0)
+        return false;
+
+    // Retrun Values
+    _intersection_t = t;
+    _intersection_point  = _ray(_intersection_t);
+    _intersection_normal = normal;
+    return true;
 
 /** \todo
  * - compute the intersection of the plane with `_ray`
@@ -42,8 +62,6 @@ intersect(const Ray& _ray,
  * - otherwise compute intersection data and store it in `_intersection_point`, `_intersection_normal`, and `_intersection_t`.
  * - return whether there is an intersection in front of the viewer (t > 0)
 */
-
-    return false;
 }
 
 
