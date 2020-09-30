@@ -27,7 +27,8 @@ intersect(const Ray&  _ray,
 {
     const vec3 &dir = _ray.direction;
     const vec3   oc = _ray.origin - center;
-
+    vec3 c2(0,0,0);                             // axis at intersection height
+    double h = 0;                               // cylinder height at intersection pos.
     std::array<double, 2> t;
 
     double a = dot(dir-dot(dir,axis)*axis, dir-dot(dir,axis)*axis);
@@ -38,26 +39,19 @@ intersect(const Ray&  _ray,
 
     _intersection_t = NO_INTERSECTION;
 
-    // Find the closest valid solution (in front of the viewer)
-    for (size_t i = 0; i < nsol; ++i) {
-        if (t[i] > 0) _intersection_t = std::min(_intersection_t, t[i]);
+    // Take closest intersection which lies within height and in front of observer
+    for(size_t i=0; i<nsol; ++i){
+        c2 = center + dot(_ray(t[i])-center,axis)*axis;
+        h = std::abs(norm(c2-center));
+        if (t[i]>0 && h<=height/2) _intersection_t = std::min(_intersection_t, t[i]);
     }
 
     if (_intersection_t == NO_INTERSECTION) return false;
-
-    // Check if intersection lies within hight range
-    vec3 c2 = center + dot(_ray(_intersection_t)-center,axis)*axis;
-    double h = std::abs(norm(c2-center));
-    if(h > height/2){
-        _intersection_t = NO_INTERSECTION;
-        return false;
-    }
 
     _intersection_point  = _ray(_intersection_t);
     _intersection_normal = (c2-_intersection_point) / radius;
 
     return true;
-
 
     /** \todo
      * - compute the first valid intersection `_ray` with the cylinder
