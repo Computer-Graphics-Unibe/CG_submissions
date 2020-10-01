@@ -62,7 +62,7 @@ solving for $t$, we get
 \implies t\textbf{n}^\top\textbf{d} &=b - \textbf{n}^\top\textbf{o}\\
 \implies t &=\frac{b - \textbf{n}^\top\textbf{o}}{\textbf{n}^\top\textbf{d}} \\
 \end{align*}
-\section{Ray-cylinder intersection}
+\section{Ray-cylinder intersection + normal derivations}
 The implicit equation for a cylinder centered on $z$ with radius $r$ is
 $$
 x^2 + y^2 = r^2
@@ -72,32 +72,38 @@ where
   x&=r\cos\phi\\
   y&=r\sin\phi
 \end{align*}
-Now we can write
+We can now substitute the ray equation in the implicit cylinder equation:
+\begin{align*}
+(o_x+ td_x)^2 + (o_y+ td_y)^2 = r^2\\
+(o_x+ td_x)^2 + (o_y+ td_y)^2 -  r^2 &= 0\\
+o_x^2 + 2td_xo_x + t^2d_x^2 + o_y^2 + 2td_yo_y + t^2d_y^2-  r^2 &= 0\\
+t^2(d_x^2 + d_y^2) + t(2d_xo_x + 2d_yo_y) + o_x^2  + o_y^2 +  - r^2 &= 0\\
+\end{align*}
+which is a form of the quadratic equation:
+$$
+at^2 + bt + c
+$$
+hence
+\begin{itemize}
+  \item $a = d_x^2 + d_y^2$
+  \item $b = 2d_xo_x + 2d_yo_y$
+  \item $c = o_x^2  + o_y^2 +  - r^2$
+\end{itemize}
 $$
 \|\textbf{q} - \textbf{p}_a - (\textbf{v}_a \cdot (\textbf{q} - \textbf{p}_a))\textbf{v}_a\|^2 - r^2 = 0
 $$
 \begin{itemize}
   \item $r$: radius of a cylinder 
-  \item $\textbf{p}_a + t\textbf{v}_a$: line orientation of the cylinder
+  \item $\textbf{p}_a + \textbf{v}_at$: line orientation of the cylinder
   \item $\textbf{q}$: point on the cylinder
 \end{itemize}
-to find intersection points with a ray $\textbf{p} + t\textbf{v}$, substitute $\textbf{q} = \textbf{p} + t\textbf{v}$ 
+to find intersection points with a ray $\textbf{p} + \textbf{v}t$, substitute $\textbf{q} = \textbf{p} + \textbf{v}t$ and solve
 \begin{align*}
-\|\textbf{p} + t\textbf{v} - \textbf{p}_a - (\textbf{v}_a \cdot (\textbf{p} + t\textbf{v} - \textbf{p}_a))\textbf{v}_a\|^2 - r^2 &= 0\\
-\|\textbf{p} + t\textbf{v} - \textbf{p}_a - (\textbf{v}_a \cdot (\textbf{p}  -\textbf{p}_a) + \textbf{v}_a\cdot t\textbf{v} ))\textbf{v}_a\|^2 - r^2 &= 0\\
-\|\textbf{p} + t\textbf{v} - \textbf{p}_a - (\textbf{v}_a \cdot (\textbf{p}  -\textbf{p}_a))\textbf{v}_a - (\textbf{v}_a\cdot t\textbf{v} ))\textbf{v}_a\|^2 - r^2 &= 0\\
-\|t\underbrace{(\textbf{v} - (\textbf{v}_a\cdot \textbf{v} ))\textbf{v}_a)}_{\textbf{F}} + \underbrace{\textbf{p}  - \textbf{p}_a - (\textbf{v}_a \cdot (\textbf{p}  -\textbf{p}_a))\textbf{v}_a}_{\textbf{G}} \|^2 - r^2 &= 0\\
-\|t\textbf{F} +\textbf{G} \|^2 - r^2 &= 0\\
-t^2\underbrace{\textbf{F}^\top\textbf{F}}_{a} +t\underbrace{2\textbf{F}^\top\textbf{G}}_{b} + \underbrace{\textbf{H}^\top\textbf{H}  - r^2}_{c} &= 0
+\|\textbf{p} + \textbf{v}t - \textbf{p}_a - (\textbf{v}_a \cdot (\textbf{p} + \textbf{v}t - \textbf{p}_a))\textbf{v}_a\|^2 - r^2 &= 0
 \end{align*}
-This is a quadratic equation with the following coefficients:
-\begin{itemize}
-  \item $a = \|\textbf{v} - (\textbf{v}_a\cdot \textbf{v} ))\textbf{v}_a\|^2$
-\item $b = 2\Big(\textbf{v} - (\textbf{v}_a\cdot \textbf{v} ))\textbf{v}_a\Big)^\top \Big(\textbf{p}  - \textbf{p}_a - (\textbf{v}_a \cdot (\textbf{p}  -\textbf{p}_a))\textbf{v}_a\Big)$
-\item  $ c = \|\textbf{p}  - \textbf{p}_a - (\textbf{v}_a \cdot (\textbf{p}  -\textbf{p}_a))\textbf{v}_a\|^2 - r^2$
-\end{itemize}
 \begin{thebibliography}{10} % 10 is a random guess of the total number of references 
-  \bibitem{Pharr_1999} Denis Zorin, \url{https://mrl.nyu.edu/~dzorin/rend05/lecture2.pdf}%Companion}, Addison-Wesley, Reading, MA, 1994.
+  \bibitem{Pharr_2018} Pharr et al. Physically Based Rendering:
+  From Theory To Implementation, \url{http://www.pbr-book.org/3ed-2018/Shapes/Cylinders.html}%Companion}, Addison-Wesley, Reading, MA, 1994.
 
 \end{thebibliography}
 \end{document}
