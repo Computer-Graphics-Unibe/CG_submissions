@@ -3,3 +3,9 @@ build/
 
 # PDF's
 *.pdf
+
+# Latex files
+*.aux
+*.log
+*.toc
+*.out
