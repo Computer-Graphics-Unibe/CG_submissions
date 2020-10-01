@@ -78,7 +78,8 @@ $$
 $$
 \begin{itemize}
   \item $r$: radius of a cylinder 
-  \item $\textbf{p}_a + t\textbf{v}_a$: line orientation of the cylinder
+  \item $\textbf{p}_a$: cylinder center
+  \item $\textbf{v}_a$: cylinder axis
   \item $\textbf{q}$: point on the cylinder
 \end{itemize}
 to find intersection points with a ray $\textbf{p} + t\textbf{v}$, substitute $\textbf{q} = \textbf{p} + t\textbf{v}$ 
@@ -96,6 +97,24 @@ This is a quadratic equation with the following coefficients:
 \item $b = 2\Big(\textbf{v} - (\textbf{v}_a\cdot \textbf{v} ))\textbf{v}_a\Big)^\top \Big(\textbf{p}  - \textbf{p}_a - (\textbf{v}_a \cdot (\textbf{p}  -\textbf{p}_a))\textbf{v}_a\Big)$
 \item  $ c = \|\textbf{p}  - \textbf{p}_a - (\textbf{v}_a \cdot (\textbf{p}  -\textbf{p}_a))\textbf{v}_a\|^2 - r^2$
 \end{itemize}
+
+\section{Intersection Normal Vector}
+\begin{itemize}
+\item $\textbf{c2}$: projection of intersection point to cylinder axis
+\item $\textbf{n}$: normal vector on intersection
+\end{itemize}	
+
+\begin{align*}
+\textbf{c2} =  \textbf{p}_a + (\textbf{q}- \textbf{p}_a \cdot \textbf{v}_a) \textbf{v}_a
+\\
+\textbf{n} = \frac{\textbf{c2}-\textbf{q}}{ r} 
+\end{align*}
+
+
+
+
+
+
 \begin{thebibliography}{10} % 10 is a random guess of the total number of references 
   \bibitem{Pharr_1999} Denis Zorin, \url{https://mrl.nyu.edu/~dzorin/rend05/lecture2.pdf}%Companion}, Addison-Wesley, Reading, MA, 1994.
 
