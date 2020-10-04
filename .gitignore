@@ -9,3 +9,10 @@ build/
 *.log
 *.toc
 *.out
+*.gz
+
+# Misc
+*.zip
+
+# Qt files
+*.user
